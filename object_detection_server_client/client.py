@@ -3,12 +3,12 @@ HOST = '127.0.0.1'
 PORT = 24680
 def connectToServer(HOST, PORT):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-	server_socket.connect((HOST, PORT))
-
-	return server_socket
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server_socket.connect((HOST, PORT))
+    return server_socket
 
 server_socket = None
+
 try:
 	server_socket = connectToServer(HOST, PORT)
 except ConnectionRefusedError:
@@ -27,4 +27,4 @@ if server_socket != None:
 			server_socket.close()
 			break
 
-    server_socket.close()
+server_socket.close()
